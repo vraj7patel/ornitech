@@ -1,23 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 export function CustomScrollbar() {
-  const [scrollTop, setScrollTop] = useState(0);
+  const [visualScrollTop, setVisualScrollTop] = useState(0);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [height, setHeight] = useState(window.innerHeight);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [pathLength, setPathLength] = useState(0);
+  const targetScrollTop = useRef(0);
+  const animationFrameId = useRef(null);
   const pathRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const sTop = window.scrollY || document.documentElement.scrollTop;
       const realScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      
+
       // Dynamic buffer: 120px for long pages, or 30% of scroll height for short pages
       const buffer = realScrollHeight > 400 ? 120 : Math.max(0, realScrollHeight * 0.3);
       const sHeight = Math.max(0, realScrollHeight - buffer);
-      
-      setScrollTop(sTop);
+
+      targetScrollTop.current = sTop;
       setScrollHeight(sHeight);
     };
 
@@ -29,6 +31,7 @@ export function CustomScrollbar() {
 
     // Initial setup
     handleScroll();
+    setVisualScrollTop(window.scrollY);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
@@ -47,6 +50,30 @@ export function CustomScrollbar() {
       window.removeEventListener('load', handleScroll, true);
       clearInterval(intervalId);
       observer.disconnect();
+    };
+  }, []);
+
+  // requestAnimationFrame loop to smoothly interpolate visual scroll position
+  useEffect(() => {
+    const updateInterpolation = () => {
+      setVisualScrollTop((prev) => {
+        const diff = targetScrollTop.current - prev;
+        // If extremely close, snap to final target to stop the loop
+        if (Math.abs(diff) < 0.1) {
+          return targetScrollTop.current;
+        }
+        // Lerp coefficient: 0.16 gives a perfect, fluid macOS-like scrollbar trail
+        return prev + diff * 0.16;
+      });
+      animationFrameId.current = requestAnimationFrame(updateInterpolation);
+    };
+
+    animationFrameId.current = requestAnimationFrame(updateInterpolation);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 
@@ -70,14 +97,14 @@ export function CustomScrollbar() {
 
   // Path starts at the top-left, curves to the right, goes down, and curves to the bottom-left
   const pathD = `M ${150 - paddingRight - radius - horizontalLength} ${paddingTop} ` +
-                `L ${150 - paddingRight - radius} ${paddingTop} ` +
-                `A ${radius} ${radius} 0 0 1 ${150 - paddingRight} ${paddingTop + radius} ` +
-                `L ${150 - paddingRight} ${height - paddingBottom - radius} ` +
-                `A ${radius} ${radius} 0 0 1 ${150 - paddingRight - radius} ${height - paddingBottom} ` +
-                `L ${150 - paddingRight - radius - horizontalLength} ${height - paddingBottom}`;
+    `L ${150 - paddingRight - radius} ${paddingTop} ` +
+    `A ${radius} ${radius} 0 0 1 ${150 - paddingRight} ${paddingTop + radius} ` +
+    `L ${150 - paddingRight} ${height - paddingBottom - radius} ` +
+    `A ${radius} ${radius} 0 0 1 ${150 - paddingRight - radius} ${height - paddingBottom} ` +
+    `L ${150 - paddingRight - radius - horizontalLength} ${height - paddingBottom}`;
 
   // Scroll ratio & thumb math (clamped to prevent overflow clipping)
-  const scrollFraction = scrollHeight > 0 ? Math.min(1, Math.max(0, scrollTop / scrollHeight)) : 0;
+  const scrollFraction = scrollHeight > 0 ? Math.min(1, Math.max(0, visualScrollTop / scrollHeight)) : 0;
   const thumbLength = pathLength ? Math.max(80, pathLength * (height / (scrollHeight + height))) : 80;
   const strokeDashoffset = pathLength ? -(scrollFraction * (pathLength - thumbLength)) : 0;
 

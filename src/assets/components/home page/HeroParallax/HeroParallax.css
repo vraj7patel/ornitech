@@ -149,7 +149,7 @@
     margin-bottom: 20px;
     /* Allow horizontal scroll on mobile so cards are still visible */
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding: 0 24px 8px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
