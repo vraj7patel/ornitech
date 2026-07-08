@@ -31,7 +31,7 @@ function App() {
               <SpotlightNewDemo />
               <Team />
               <Testimonials />
-              <ContactUs />
+              {/* <ContactUs /> */}
               <WavyBackgroundDemo />
             </>
           }
