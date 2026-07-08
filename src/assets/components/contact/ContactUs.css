@@ -1,0 +1,261 @@
+/* ── Contact Us Section ──────────────────────────────────── */
+.contact-section {
+  width: 100%;
+  background: #000000;
+  padding: 80px 48px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Left Side ───────────────────────────────────────────── */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e3a5f, #0c1f33);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+}
+
+.contact-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.contact-desc {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #a3a3a3;
+  margin: 0;
+  max-width: 420px;
+}
+
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.82rem;
+  color: #737373;
+  margin-top: 8px;
+}
+
+.contact-dot {
+  color: #525252;
+}
+
+/* ── World Map ───────────────────────────────────────────── */
+.contact-map-wrap {
+  position: relative;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 2 / 1;
+}
+
+.contact-world-map {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-map-marker {
+  position: absolute;
+  top: 44.5%;
+  left: 71.9%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.marker-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  background: rgba(28, 28, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1.5px solid #38bdf8;
+  border-radius: 8px;
+  padding: 2px 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.marker-beam {
+  width: 1.5px;
+  height: 65px;
+  background: linear-gradient(to bottom, #38bdf8, rgba(56, 189, 248, 0.15));
+}
+
+.marker-glow {
+  width: 90px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, transparent 70%);
+  margin-top: -12px;
+}
+
+/* ── Right Side ──────────────────────────────────────────── */
+.contact-right {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 40px;
+}
+
+.contact-form-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.contact-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #d4d4d4;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.9rem;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #525252;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-submit-btn {
+  align-self: flex-start;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: #171717;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.contact-submit-btn:hover {
+  background: #262626;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contact-section {
+    padding: 60px 24px;
+  }
+  .contact-map-wrap {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-right {
+    padding: 24px;
+  }
+  .contact-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .contact-dot {
+    display: none;
+  }
+}
+
+/* ── Map Path Flow Animation ──────────────────────────────── */
+.animated-map-path {
+  stroke-dasharray: 12 6;
+  stroke-dashoffset: 0;
+  animation: mapFlow 4s linear infinite;
+}
+
+@keyframes mapFlow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+

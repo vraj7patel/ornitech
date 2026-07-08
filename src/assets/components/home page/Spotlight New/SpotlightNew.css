@@ -1,0 +1,135 @@
+/* ============================================================
+   Spotlight New — Aceternity UI faithful replica (vanilla CSS)
+   ============================================================ */
+
+/* ── Wrapper ─────────────────────────────────────────────── */
+.spotlight-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;               /* full screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  overflow: hidden;
+}
+
+
+/* ── Spotlight container ─────────────────────────────────── */
+.spotlight-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* ── Left / Right spotlight groups ──────────────────────── */
+.spotlight-left,
+.spotlight-right {
+  position: absolute;
+  top: 0;
+  width: 560px;
+  height: 1380px;
+  /* Tilt the beams — matches Aceternity's -rotate-45 ish look */
+  transform-origin: top center;
+}
+
+.spotlight-left {
+  left: -200px;
+  transform: translateY(var(--translate-y, -350px)) rotate(-45deg);
+  animation: spotlight-left-anim 7s ease-in-out infinite alternate;
+}
+
+.spotlight-right {
+  right: -200px;
+  transform: translateY(var(--translate-y, -350px)) rotate(45deg) scaleX(-1);
+  animation: spotlight-right-anim 7s ease-in-out infinite alternate;
+}
+
+/* ── Inner blobs (the two gradient layers per spotlight) ─── */
+.spotlight-blob-1 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.spotlight-blob-2 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes spotlight-left-anim {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--translate-y, -350px) - 80px)) rotate(-45deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.85;
+    transform: translateY(var(--translate-y, -350px)) rotate(-45deg);
+  }
+}
+
+@keyframes spotlight-right-anim {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--translate-y, -350px) - 80px)) rotate(45deg) scaleX(-1);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.85;
+    transform: translateY(var(--translate-y, -350px)) rotate(45deg) scaleX(-1);
+  }
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.spotlight-content {
+  position: relative;
+  z-index: 10;
+  padding: 80px 24px 80px;
+  max-width: 56rem;            /* max-w-7xl equivalent for the text */
+  text-align: center;
+}
+
+.spotlight-heading {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  /* bg-clip-text gradient from neutral-50 → neutral-400 */
+  background: linear-gradient(to bottom, #fafafa 30%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.spotlight-heading-accent {
+  /* Keeps the same gradient — no extra styling needed; inherits parent */
+}
+
+.spotlight-subtext {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #d4d4d4;              /* text-neutral-300 */
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: center;
+}

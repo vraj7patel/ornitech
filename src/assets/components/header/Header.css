@@ -1,0 +1,272 @@
+/* ── Header — 10turtle Liquid Glass style ──────────────────── */
+.ot-header {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1180px;
+  z-index: 1000;
+  border-radius: 50px;
+  padding: 37px 20px 37px 38px;
+  height: 52px;
+
+  /* Liquid Glass effect */
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 2px 2px 0px -2px rgba(255, 255, 255, 0.35),
+    inset 0 0 3px 0.5px rgba(255, 255, 255, 0.18),
+    0 8px 32px rgba(0, 0, 0, 0.45);
+
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s, background 0.3s, box-shadow 0.3s, top 0.3s;
+}
+
+.ot-header.scrolled {
+  background: rgba(5, 5, 5, 0.8);
+  box-shadow:
+    inset 2px 2px 0px -2px rgba(255, 255, 255, 0.2),
+    0 12px 40px rgba(0, 0, 0, 0.6);
+  top: 8px;
+}
+
+.ot-header.hidden {
+  transform: translate(-50%, -70px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ot-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 16px;
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.ot-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.ot-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.ot-logo-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* ── Center Nav ───────────────────────────────────────────── */
+.ot-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ot-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ot-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.ot-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ot-nav-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* ── Right Actions ────────────────────────────────────────── */
+.ot-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ot-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+
+.ot-icon-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ot-login-btn {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.ot-login-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ot-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+}
+
+.ot-cta-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+}
+
+/* ── Hamburger ────────────────────────────────────────────── */
+.ot-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.ot-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.ot-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.ot-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.ot-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile Menu ──────────────────────────────────────────── */
+.ot-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 4px;
+}
+
+.ot-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ot-mobile-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ot-nav {
+    display: none;
+  }
+  .ot-hamburger {
+    display: flex;
+  }
+  .ot-header {
+    width: calc(100% - 24px);
+    top: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ot-login-btn {
+    display: none;
+  }
+  .ot-cta-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+}
