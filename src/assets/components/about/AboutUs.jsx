@@ -40,7 +40,7 @@ export function AboutUs() {
       </section>
 
       {/* ── Mission & Vision cards ───────────────────────────── */}
-      <section className="about-mission">
+      {/* <section className="about-mission">
         <div className="about-mission-grid">
           <div className="about-mission-card">
             <div className="about-mission-icon">🚀</div>
@@ -69,7 +69,7 @@ export function AboutUs() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Team Section ────────────────────────────────────── */}
       <Team />
