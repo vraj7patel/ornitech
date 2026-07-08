@@ -204,7 +204,7 @@ body {
 
   /* Floating mobile action buttons */
   .floating-buttons {
-    bottom: 92px;
+    bottom: 22px;
     right: 12px;
     gap: 10px;
   }
