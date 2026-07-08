@@ -46,8 +46,8 @@ export function WavyBackground({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
+    let w = (canvas.width = canvas.offsetWidth || window.innerWidth);
+    let h = (canvas.height = canvas.offsetHeight || window.innerHeight);
     ctx.filter = `blur(${blur}px)`;
     let nt = 0;
 
@@ -78,8 +78,8 @@ export function WavyBackground({
     render();
 
     const handleResize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+      w = canvas.width = canvas.offsetWidth || window.innerWidth;
+      h = canvas.height = canvas.offsetHeight || window.innerHeight;
       ctx.filter = `blur(${blur}px)`;
     };
 
