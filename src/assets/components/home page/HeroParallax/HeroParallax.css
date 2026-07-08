@@ -1,0 +1,165 @@
+/* ── HeroParallax ─────────────────────────────────────────────
+   Scroll-driven 3D parallax section
+   Replaces Tailwind classes with vanilla CSS
+──────────────────────────────────────────────────────────────── */
+
+/* Root container — 300vh so there's plenty of scroll room */
+.hp-root {
+  height: 300vh;
+  padding: 160px 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* 3-D perspective for the scroll tilt effect */
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.hp-header {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 24px 160px;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.hp-header-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.hp-header-sub {
+  max-width: 600px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 28px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ── Rows container (the 3-D animated wrapper) ────────────────── */
+.hp-rows-wrapper {
+  /* framer-motion applies rotateX / rotateZ / translateY / opacity here */
+}
+
+/* ── Individual row ───────────────────────────────────────────── */
+.hp-row {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.hp-row--reverse {
+  flex-direction: row-reverse;
+}
+
+/* ── Product Card ─────────────────────────────────────────────── */
+.hp-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 480px;
+  height: 384px;
+  cursor: pointer;
+}
+
+.hp-card-link {
+  display: block;
+}
+
+.hp-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.3s ease;
+}
+
+.hp-card:hover .hp-card-img {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+
+/* Dark overlay on hover */
+.hp-card-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hp-card:hover .hp-card-overlay {
+  opacity: 0.75;
+}
+
+/* Title — reveals on hover */
+.hp-card-title {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.hp-card:hover .hp-card-title {
+  opacity: 1;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hp-root {
+    height: auto;
+    perspective: none;
+    overflow-x: hidden;
+    padding: 80px 0;
+  }
+
+  .hp-header {
+    padding: 40px 24px 60px;
+  }
+
+  .hp-row {
+    gap: 20px;
+    margin-bottom: 20px;
+    /* Allow horizontal scroll on mobile so cards are still visible */
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .hp-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hp-card {
+    width: 280px;
+    height: 220px;
+  }
+}

@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Header } from './assets/components/header/Header.jsx'
 import { SpotlightNewDemo } from './assets/components/home page/Spotlight New/SpotlightNew.jsx'
 import { WavyBackgroundDemo } from './assets/components/home page/Wavy Background/WavyBackground.jsx'
+import { HeroParallaxDemo } from './assets/components/home page/HeroParallax/HeroParallaxDemo.jsx'
 import { Team } from './assets/components/home page/Team/Team.jsx'
 import { Testimonials } from './assets/components/home page/Testimonials/Testimonials.jsx'
 import { ContactUs } from './assets/components/contact/ContactUs.jsx'
+import { AboutUs } from './assets/components/about/AboutUs.jsx'
 import { Footer } from './assets/components/footer/Footer.jsx'
+import { Login } from './assets/components/login/Login.jsx'
 import { CustomScrollbar } from './assets/components/CustomScrollbar.jsx'
 import { LoadingScreen } from './assets/components/LoadingScreen.jsx'
 import { RouteChangeLoader } from './assets/components/RouteChangeLoader.jsx'
-import { MobileFooterDock } from './assets/components/MobileFooterDock.jsx'
+// import { MobileFooterDock } from './assets/components/MobileFooterDock.jsx'
 import { useGlobalLoader } from './assets/hooks/useGlobalLoader.js'
 import './App.css'
 
@@ -74,22 +77,25 @@ function AppInner() {
 
       <CustomScrollbar />
       <Header />
-      <MobileFooterDock />
+      {/* <MobileFooterDock /> */}
 
       <Routes>
         <Route
           path="/"
           element={
             <>
-              <SpotlightNewDemo />
-              <Team />
-              <Testimonials />
+              {/* <SpotlightNewDemo /> */}
+              {/* <Team /> */}
+              {/* <Testimonials /> */}
               {/* <ContactUs /> */}
+              <HeroParallaxDemo />
               <WavyBackgroundDemo />
             </>
           }
         />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <Footer />

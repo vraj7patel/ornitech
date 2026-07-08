@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../imges/IMG_3816.PNG';
+import logo from '../imges/IMG_3816.PNG';
 import './MobileFooterDock.css';
 
 export function MobileFooterDock() {
@@ -40,12 +40,12 @@ export function MobileFooterDock() {
             </button>
 
             {/* User Profile Icon */}
-            <button className="mobile-dock-btn" aria-label="Account">
+            <Link to="/login" className="mobile-dock-btn" aria-label="Account">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -61,10 +61,11 @@ export function MobileFooterDock() {
             </a>
             <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
             <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+            <Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
             <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
             <a href="#partners" onClick={() => setMenuOpen(false)}>Our Partners</a>
             <hr className="mobile-dock-drawer-divider" />
-            <a href="#login" className="mobile-dock-drawer-login" onClick={() => setMenuOpen(false)}>Login</a>
+            <Link to="/login" className="mobile-dock-drawer-login" onClick={() => setMenuOpen(false)}>Login</Link>
             <a href="#contact" className="ot-cta-btn mobile-dock-drawer-cta" onClick={() => setMenuOpen(false)}>
               Start Free Trial
             </a>
