@@ -10,6 +10,7 @@ import { Footer } from './assets/components/footer/Footer.jsx'
 import { CustomScrollbar } from './assets/components/CustomScrollbar.jsx'
 import { LoadingScreen } from './assets/components/LoadingScreen.jsx'
 import { RouteChangeLoader } from './assets/components/RouteChangeLoader.jsx'
+import { MobileFooterDock } from './assets/components/MobileFooterDock.jsx'
 import { useGlobalLoader } from './assets/hooks/useGlobalLoader.js'
 import './App.css'
 
@@ -73,6 +74,7 @@ function AppInner() {
 
       <CustomScrollbar />
       <Header />
+      <MobileFooterDock />
 
       <Routes>
         <Route

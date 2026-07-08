@@ -1,24 +1,28 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
+/**
+ * RouteChangeLoader
+ *
+ * Triggers show/hide during React Router route transitions.
+ * Since the legacy BrowserRouter doesn't support v6/v7 useNavigation data router hooks,
+ * this uses pathname comparison to show the loading screen during transitions.
+ */
 export function RouteChangeLoader({ show, hide }) {
   const location = useLocation();
   const prevPathRef = useRef(location.pathname);
-  const isShowingRef = useRef(false);
 
   useEffect(() => {
-    if (prevPathRef.current === location.pathname) return;
+    const prev = prevPathRef.current;
+    if (prev === location.pathname) return;
     prevPathRef.current = location.pathname;
 
-    if (!isShowingRef.current) {
-      isShowingRef.current = true;
-      show();
-      const t = setTimeout(() => {
-        isShowingRef.current = false;
-        hide();
-      }, 600);
-      return () => clearTimeout(t);
-    }
+    // Show the loading screen on transition
+    show();
+    const t = setTimeout(() => {
+      hide();
+    }, 600); // 600ms loader screen display time on transition
+    return () => clearTimeout(t);
   }, [location.pathname, show, hide]);
 
   return null;

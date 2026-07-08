@@ -54,3 +54,12 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
   }
 }
+
+/* Position floating buttons above the bottom navigation bar on mobile/tablet */
+@media (max-width: 900px) {
+  .floating-buttons {
+    bottom: 96px;
+    right: 16px;
+  }
+}
+
