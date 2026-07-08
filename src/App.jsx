@@ -7,6 +7,7 @@ import { Team } from './assets/components/home page/Team/Team.jsx'
 import { Testimonials } from './assets/components/home page/Testimonials/Testimonials.jsx'
 import { ContactUs } from './assets/components/contact/ContactUs.jsx'
 import { Footer } from './assets/components/footer/Footer.jsx'
+import { CustomScrollbar } from './assets/components/CustomScrollbar.jsx'
 import './App.css'
 
 // Reset scroll to top on route change
@@ -22,6 +23,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <CustomScrollbar />
       <Header />
       <Routes>
         <Route
