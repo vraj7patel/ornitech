@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Header } from './assets/components/header/Header.jsx'
 import { SpotlightNewDemo } from './assets/components/home page/Spotlight New/SpotlightNew.jsx'
@@ -8,23 +8,72 @@ import { Testimonials } from './assets/components/home page/Testimonials/Testimo
 import { ContactUs } from './assets/components/contact/ContactUs.jsx'
 import { Footer } from './assets/components/footer/Footer.jsx'
 import { CustomScrollbar } from './assets/components/CustomScrollbar.jsx'
+import { LoadingScreen } from './assets/components/LoadingScreen.jsx'
+import { RouteChangeLoader } from './assets/components/RouteChangeLoader.jsx'
+import { useGlobalLoader } from './assets/hooks/useGlobalLoader.js'
 import './App.css'
 
-// Reset scroll to top on route change
+// Resets scroll to top on every route change
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
   return null
 }
 
-function App() {
+
+/**
+ * AppInner lives inside <Router> so it can use router hooks.
+ * It manages all global loading states:
+ *   - initial page load (2s auto-dismiss)
+ *   - route changes
+ *   - fetch / XHR network requests
+ *   - offline / slow network
+ */
+function AppInner() {
+  // ── Initial boot loader (auto-dismiss after 2s) ──────────────
+  const [initialLoading, setInitialLoading] = useState(true)
+
+  // ── Network / route loader (persists until all requests done) ──
+  const [networkLoading, setNetworkLoading] = useState(false)
+  const [networkVisible, setNetworkVisible] = useState(false)
+
+  const showNetworkLoader = useCallback(() => {
+    setNetworkVisible(true)
+    setNetworkLoading(true)
+  }, [])
+
+  const hideNetworkLoader = useCallback(() => {
+    setNetworkVisible(false)
+    // Give the fade-out time to complete before unmounting
+    setTimeout(() => setNetworkLoading(false), 750)
+  }, [])
+
+  // Attach the global fetch / XHR / network interceptors
+  useGlobalLoader(showNetworkLoader, hideNetworkLoader)
+
   return (
-    <Router>
+    <>
+      {/* ── Initial boot loader ─────────────────────────────── */}
+      {initialLoading && (
+        <LoadingScreen onDone={() => setInitialLoading(false)} />
+      )}
+
+      {/* ── Network / route change loader ───────────────────── */}
+      {networkLoading && (
+        <LoadingScreen
+          persistent
+          visible={networkVisible}
+          onDone={() => setNetworkLoading(false)}
+        />
+      )}
+
+      {/* ── Route-change detector + scroll reset (inside Router) ─ */}
       <ScrollToTop />
+      <RouteChangeLoader show={showNetworkLoader} hide={hideNetworkLoader} />
+
       <CustomScrollbar />
       <Header />
+
       <Routes>
         <Route
           path="/"
@@ -40,14 +89,15 @@ function App() {
         />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
+
       <Footer />
 
       {/* Floating Buttons */}
       <div className="floating-buttons">
-        <a 
-          href="mailto:hey@ornitech.com" 
-          className="float-btn float-mail" 
-          target="_blank" 
+        <a
+          href="mailto:hey@ornitech.com"
+          className="float-btn float-mail"
+          target="_blank"
           rel="noopener noreferrer"
           title="Send an Email"
         >
@@ -55,10 +105,10 @@ function App() {
             <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#EA4335"/>
           </svg>
         </a>
-        <a 
-          href="https://wa.me/919999999999" 
-          className="float-btn float-whatsapp" 
-          target="_blank" 
+        <a
+          href="https://wa.me/919999999999"
+          className="float-btn float-whatsapp"
+          target="_blank"
           rel="noopener noreferrer"
           title="Chat on WhatsApp"
         >
@@ -67,6 +117,14 @@ function App() {
           </svg>
         </a>
       </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppInner />
     </Router>
   )
 }

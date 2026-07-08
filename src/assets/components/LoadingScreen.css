@@ -1,0 +1,102 @@
+/* ── Loading Overlay ─────────────────────────────────────── */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+.loading-overlay--exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Logo + Ring wrapper ──────────────────────────────────── */
+.loading-logo-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── SVG ring ─────────────────────────────────────────────── */
+.loading-ring {
+  position: absolute;
+  inset: 0;
+  width: 120px;
+  height: 120px;
+  animation: loading-ring-spin 1.6s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes loading-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* The arc that looks like a partial ring — fades in/out at the ends */
+.loading-arc {
+  transform-origin: center center;
+}
+
+/* ── Inner circle background (matches the turtle screenshot) ─ */
+.loading-logo-circle {
+  position: relative;
+  z-index: 2;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Gentle pulse to match the subtle effect in the screenshot */
+  animation: loading-logo-pulse 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes loading-logo-pulse {
+  from { box-shadow: 0 0 0px rgba(56, 189, 248, 0); }
+  to   { box-shadow: 0 0 20px rgba(56, 189, 248, 0.25); }
+}
+
+/* ── Logo image ──────────────────────────────────────────── */
+.loading-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  animation: loading-logo-scale 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes loading-logo-scale {
+  from { transform: scale(1);    opacity: 0.85; }
+  to   { transform: scale(1.06); opacity: 1;    }
+}
+
+/* ── Brand name ──────────────────────────────────────────── */
+.loading-brand {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  animation: loading-brand-blink 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes loading-brand-blink {
+  from { opacity: 0.4; }
+  to   { opacity: 0.9; }
+}
