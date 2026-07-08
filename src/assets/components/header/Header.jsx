@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../imges/IMG_3816.PNG";
 
@@ -6,7 +7,7 @@ const navLinks = [
   { label: "AI Chatbot", href: "#", badge: "New" },
   { label: "Work", href: "#" },
   { label: "Services", href: "#" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
   { label: "Our Partners", href: "#" },
 ];
 
@@ -46,22 +47,31 @@ export function Header() {
     <header className={`ot-header${scrolled ? " scrolled" : ""}${visible ? "" : " hidden"}`}>
       <div className="ot-header-inner">
         {/* Logo */}
-        <a href="/" className="ot-logo">
+        <Link to="/" className="ot-logo">
           <img src={logo} alt="Ornitech" className="ot-logo-img" />
           <span className="ot-logo-text">Ornitech</span>
-        </a>
+        </Link>
 
         {/* Center Nav */}
         <nav className="ot-nav">
           <ul className="ot-nav-list">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="ot-nav-link">
-                  {link.label}
-                  {link.badge && (
-                    <span className="ot-nav-badge">{link.badge}</span>
-                  )}
-                </a>
+                {link.href.startsWith("/") ? (
+                  <Link to={link.href} className="ot-nav-link">
+                    {link.label}
+                    {link.badge && (
+                      <span className="ot-nav-badge">{link.badge}</span>
+                    )}
+                  </Link>
+                ) : (
+                  <a href={link.href} className="ot-nav-link">
+                    {link.label}
+                    {link.badge && (
+                      <span className="ot-nav-badge">{link.badge}</span>
+                    )}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -109,17 +119,29 @@ export function Header() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="ot-mobile-menu">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="ot-mobile-link"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-              {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="ot-mobile-link"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+                {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="ot-mobile-link"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+                {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
+              </a>
+            )
+          )}
           <a href="#contact" className="ot-cta-btn" style={{ marginTop: "12px", width: "100%", justifyContent: "center" }}>
             Start Free Trial →
           </a>

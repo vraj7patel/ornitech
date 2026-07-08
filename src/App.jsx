@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Header } from './assets/components/header/Header.jsx'
 import { SpotlightNewDemo } from './assets/components/home page/Spotlight New/SpotlightNew.jsx'
 import { WavyBackgroundDemo } from './assets/components/home page/Wavy Background/WavyBackground.jsx'
@@ -7,15 +9,35 @@ import { ContactUs } from './assets/components/contact/ContactUs.jsx'
 import { Footer } from './assets/components/footer/Footer.jsx'
 import './App.css'
 
+// Reset scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 function App() {
   return (
-    <>
+    <Router>
+      <ScrollToTop />
       <Header />
-      <SpotlightNewDemo />
-      <Team />
-      <Testimonials />
-      <ContactUs />
-      <WavyBackgroundDemo />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <SpotlightNewDemo />
+              <Team />
+              <Testimonials />
+              <ContactUs />
+              <WavyBackgroundDemo />
+            </>
+          }
+        />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
       <Footer />
 
       {/* Floating Buttons */}
@@ -43,7 +65,7 @@ function App() {
           </svg>
         </a>
       </div>
-    </>
+    </Router>
   )
 }
 

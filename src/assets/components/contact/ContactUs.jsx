@@ -40,7 +40,7 @@ export function ContactUs() {
   ];
 
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <div className="contact-container">
         {/* Left Side */}
         <div className="contact-left">
