@@ -2,14 +2,15 @@
    Scroll-driven 3D parallax section
 ──────────────────────────────────────────────────────────────── */
 
-/* Root container — 300vh so there's plenty of scroll room */
+/* Root container — 200vh for a tighter, more responsive scroll container */
 .hp-root {
-  height: 300vh;
-  padding: 160px 0;
+  height: 200vh;
+  padding: 12vh 0;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  /* 3-D perspective for the scroll tilt effect */
   perspective: 1000px;
   transform-style: preserve-3d;
   background: #000;
