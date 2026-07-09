@@ -81,6 +81,11 @@ const products = [
     link: "#cloud",
     thumbnail: "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
   },
+  {
+    title: "Neural Network Studio",
+    link: "#neural",
+    thumbnail: "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
 ];
 
 export function HeroParallaxDemo() {

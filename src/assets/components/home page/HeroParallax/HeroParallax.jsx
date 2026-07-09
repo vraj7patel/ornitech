@@ -11,7 +11,7 @@ import "./HeroParallax.css";
 export const HeroParallax = ({ products }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const thirdRow = products.slice(10, 16);
   const ref = React.useRef(null);
 
   const { scrollYProgress } = useScroll({
