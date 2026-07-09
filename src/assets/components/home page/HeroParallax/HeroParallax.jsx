@@ -104,26 +104,57 @@ const ParallaxHeader = () => (
 );
 
 /* ─── Product Card ───────────────────────────────────────────── */
-const ProductCard = ({ product, translate }) => (
-  <motion.div
-    style={{ x: translate }}
-    whileHover={{ y: -20 }}
-    className="hp-card"
-  >
-    <a
-      href={product.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hp-card-link"
+const ProductCard = ({ product, translate }) => {
+  const cardRef = React.useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const { left, top, width, height } = card.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 18}deg) rotateX(${-y * 18}deg) scale(1.04) translateY(-8px)`;
+    card.style.setProperty('--mx', `${(x + 0.5) * 100}%`);
+    card.style.setProperty('--my', `${(y + 0.5) * 100}%`);
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = `perspective(800px) rotateY(0deg) rotateX(0deg) scale(1) translateY(0px)`;
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ x: translate }}
+      className="hp-card"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        className="hp-card-img"
-      />
-    </a>
-    {/* Hover overlay */}
-    <div className="hp-card-overlay" />
-    <h3 className="hp-card-title">{product.title}</h3>
-  </motion.div>
-);
+      <a
+        href={product.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hp-card-link"
+      >
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className="hp-card-img"
+        />
+      </a>
+      <div className="hp-card-shine" />
+      <div className="hp-card-overlay" />
+      {product.category && (
+        <span className="hp-card-tag">{product.category}</span>
+      )}
+      <div className="hp-card-footer">
+        <h3 className="hp-card-title">{product.title}</h3>
+        {product.description && (
+          <p className="hp-card-desc">{product.description}</p>
+        )}
+      </div>
+    </motion.div>
+  );
+};
