@@ -219,9 +219,11 @@
 .ot-hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .ot-hamburger.open span:nth-child(2) {
   opacity: 0;
 }
+
 .ot-hamburger.open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -262,6 +264,7 @@
 
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
+
   /* Hide desktop-only nav and buttons */
   .ot-nav,
   .ot-search-btn,
@@ -290,7 +293,7 @@
     backdrop-filter: blur(8px) saturate(1.8) !important;
     -webkit-backdrop-filter: blur(8px) saturate(1.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 
+    box-shadow:
       0 12px 40px rgba(0, 0, 0, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     width: calc(100% - 32px) !important;
@@ -301,22 +304,26 @@
 
   /* Floating Dropdown Menu on mobile */
   .ot-mobile-menu {
-    position: absolute;
-    top: 72px; /* Float below the header capsule */
-    left: 0;
-    right: 0;
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    position: fixed;
+    top: 90px;
+    left: 16px;
+    right: 16px;
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     padding: 16px;
-    margin: 0 !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+    margin: 0;
+    box-shadow:
+      inset 2px 2px 0px -2px rgba(255, 255, 255, 0.2),
+      inset 0 0 3px 0.5px rgba(255, 255, 255, 0.1),
+      0 20px 40px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     gap: 8px;
     animation: otSlideDown 0.3s ease;
+    z-index: 999;
   }
 }
 
@@ -325,6 +332,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

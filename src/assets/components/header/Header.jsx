@@ -156,42 +156,43 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Drawer */}
-        {mobileOpen && (
-          <div className="ot-mobile-menu">
-            {navLinks.map((link) =>
-              link.href.startsWith("/") ? (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="ot-mobile-link"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                  {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="ot-mobile-link"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                  {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
-                </a>
-              )
-            )}
-            <a
-              href="#contact"
-              className="ot-cta-btn"
-              style={{ marginTop: "12px", width: "100%", justifyContent: "center" }}
-            >
-              Start Free Trial →
-            </a>
-          </div>
-        )}
       </header>
+
+      {/* Mobile Drawer — outside <header> so backdrop-filter works */}
+      {mobileOpen && (
+        <div className="ot-mobile-menu">
+          {navLinks.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="ot-mobile-link"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+                {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="ot-mobile-link"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+                {link.badge && <span className="ot-nav-badge">{link.badge}</span>}
+              </a>
+            )
+          )}
+          <a
+            href="#contact"
+            className="ot-cta-btn"
+            style={{ marginTop: "12px", width: "100%", justifyContent: "center" }}
+          >
+            Start Free Trial →
+          </a>
+        </div>
+      )}
 
       {/* ── Search Overlay ─────────────────────────────────────── */}
       <div
