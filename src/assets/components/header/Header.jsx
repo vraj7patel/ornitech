@@ -27,6 +27,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
 
   // ── Search state ─────────────────────────────────────────────
   const [searchOpen, setSearchOpen] = useState(false);
@@ -72,13 +74,14 @@ export function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [searchOpen]);
 
+  // Close menu on any scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 20);
+      if (mobileOpen) setMobileOpen(false); // close on any scroll
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
         setVisible(false);
-        setMobileOpen(false);
       } else {
         setVisible(true);
       }
@@ -86,12 +89,31 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, mobileOpen]);
+
+  // Close menu on outside click / touch
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleOutside = (e) => {
+      if (
+        headerRef.current && !headerRef.current.contains(e.target) &&
+        menuRef.current && !menuRef.current.contains(e.target)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
+  }, [mobileOpen]);
 
   return (
     <>
       {/* ── Header Bar ────────────────────────────────────────── */}
-      <header className={`ot-header${scrolled ? " scrolled" : ""}${visible ? "" : " hidden"}`}>
+      <header ref={headerRef} className={`ot-header${scrolled ? " scrolled" : ""}${visible ? "" : " hidden"}`}>
         <div className="ot-header-inner">
           {/* Logo */}
           <Link to="/" className="ot-logo">
@@ -135,7 +157,7 @@ export function Header() {
             </button>
 
             {/* Login */}
-            <Link to="/login" className="ot-login-btn">Login</Link>
+            <Link to="/login" className="ot-login-btn" onClick={() => setMobileOpen(false)}>Login</Link>
 
             {/* Hamburger (mobile) */}
             <button
@@ -147,7 +169,7 @@ export function Header() {
             </button>
 
             {/* Profile / Account (mobile) */}
-            <Link to="/login" className="ot-icon-btn ot-profile-btn" aria-label="Account">
+            <Link to="/login" className="ot-icon-btn ot-profile-btn" aria-label="Account" onClick={() => setMobileOpen(false)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
@@ -160,7 +182,7 @@ export function Header() {
 
       {/* Mobile Drawer — outside <header> so backdrop-filter works */}
       {mobileOpen && (
-        <div className="ot-mobile-menu">
+        <div ref={menuRef} className="ot-mobile-menu">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
