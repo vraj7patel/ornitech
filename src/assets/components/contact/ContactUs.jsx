@@ -9,14 +9,48 @@ export function ContactUs() {
     company: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    if (!formData.fullName || !formData.email || !formData.message) {
+      setSubmitStatus("error");
+      setStatusMessage("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setStatusMessage("");
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitStatus('success');
+        setStatusMessage('Thank you! Your message has been sent successfully.');
+        setFormData({ fullName: '', email: '', company: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setStatusMessage(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setStatusMessage('Failed to send message. Please check your network connection.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Pulse lines flow straight to India office
@@ -79,7 +113,14 @@ export function ContactUs() {
           {/* World Map */}
           <div className="contact-map-wrap">
             <div className="contact-map-marker">
-              <div className="marker-label">We are here</div>
+              <a
+                href="https://www.google.com/maps/place/Centre+Point/@21.2045171,72.8312806,20z/data=!4m10!1m2!2m1!1sOFFICE+NO-324,+CENTER+POINT+CO+OPERATIVE+SOCIETY,+BALI+SHERI,+MAHIDHARPURA,+SURAT-395003!3m6!1s0x3be04ef4690b1283:0x83b05ba97a26dc2d!8m2!3d21.2045171!4d72.8318761!15sClhPRkZJQ0UgTk8tMzI0LCBDRU5URVIgUE9JTlQgQ08gT1BFUkFUSVZFIFNPQ0lFVFksIEJBTEkgU0hFUkksIE1BSElESEFSUFVSQSwgU1VSQVQtMzk1MDAzkgEQY29ycG9yYXRlX29mZmljZeABAA!16s%2Fg%2F11gbm2yybh?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="marker-label"
+              >
+                We are here
+              </a>
               <div className="marker-beam"></div>
               <div className="marker-glow"></div>
             </div>
@@ -91,8 +132,14 @@ export function ContactUs() {
         <div className="contact-right">
           <div className="contact-form-grid-bg"></div>
           <form className="contact-form" onSubmit={handleSubmit}>
+            {submitStatus && (
+              <div className={`contact-status ${submitStatus}`}>
+                {statusMessage}
+              </div>
+            )}
+
             <div className="form-group">
-              <label htmlFor="fullName">Full name</label>
+              <label htmlFor="fullName">Full name *</label>
               <input
                 type="text"
                 id="fullName"
@@ -100,11 +147,13 @@ export function ContactUs() {
                 placeholder="Manu Arora"
                 value={formData.fullName}
                 onChange={handleChange}
+                disabled={isSubmitting}
+                required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="email">Email Address *</label>
               <input
                 type="email"
                 id="email"
@@ -112,6 +161,8 @@ export function ContactUs() {
                 placeholder="support@ornitech.in"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isSubmitting}
+                required
               />
             </div>
 
@@ -124,11 +175,12 @@ export function ContactUs() {
                 placeholder="Ornitech LLC"
                 value={formData.company}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">Message *</label>
               <textarea
                 id="message"
                 name="message"
@@ -136,11 +188,13 @@ export function ContactUs() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
+                disabled={isSubmitting}
+                required
               />
             </div>
 
-            <button type="submit" className="contact-submit-btn">
-              Submit
+            <button type="submit" className="contact-submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>
