@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { Header } from './assets/components/header/Header.jsx'
 import { SpotlightNewDemo } from './assets/components/home page/Spotlight New/SpotlightNew.jsx'
 import { WavyBackgroundDemo } from './assets/components/home page/Wavy Background/WavyBackground.jsx'
@@ -125,6 +126,7 @@ function AppInner() {
           </svg>
         </a>
       </div> */}
+      <Analytics />
     </>
   )
 }
