@@ -157,7 +157,7 @@ export function Header() {
             </button>
 
             {/* Login */}
-            <Link to="/login" className="ot-login-btn" onClick={() => setMobileOpen(false)}>Login</Link>
+            {/* <Link to="/login" className="ot-login-btn" onClick={() => setMobileOpen(false)}>Login</Link> */}
 
             {/* Hamburger (mobile) */}
             <button
@@ -169,12 +169,12 @@ export function Header() {
             </button>
 
             {/* Profile / Account (mobile) */}
-            <Link to="/login" className="ot-icon-btn ot-profile-btn" aria-label="Account" onClick={() => setMobileOpen(false)}>
+            {/* <Link to="/login" className="ot-icon-btn ot-profile-btn" aria-label="Account" onClick={() => setMobileOpen(false)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
               </svg>
-            </Link>
+            </Link> */}
           </div>
         </div>
 

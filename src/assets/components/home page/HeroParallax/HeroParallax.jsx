@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -13,6 +13,14 @@ export const HeroParallax = ({ products }) => {
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 16);
   const ref = React.useRef(null);
+
+  // Detect mobile to disable parallax transforms
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 900);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -46,11 +54,18 @@ export const HeroParallax = ({ products }) => {
     springConfig
   );
 
+  // On mobile: no 3D transforms, no horizontal translate
+  const wrapperStyle = isMobile
+    ? {}
+    : { rotateX, rotateZ, translateY, opacity };
+  const txForward = isMobile ? 0 : translateX;
+  const txReverse = isMobile ? 0 : translateXReverse;
+
   return (
     <div ref={ref} className="hp-root">
       <ParallaxHeader />
       <motion.div
-        style={{ rotateX, rotateZ, translateY, opacity }}
+        style={wrapperStyle}
         className="hp-rows-wrapper"
       >
         {/* Row 1 — right to left */}
@@ -58,7 +73,7 @@ export const HeroParallax = ({ products }) => {
           {firstRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateX}
+              translate={txForward}
               key={product.title}
             />
           ))}
@@ -69,7 +84,7 @@ export const HeroParallax = ({ products }) => {
           {secondRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateXReverse}
+              translate={txReverse}
               key={product.title}
             />
           ))}
@@ -80,7 +95,7 @@ export const HeroParallax = ({ products }) => {
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateX}
+              translate={txForward}
               key={product.title}
             />
           ))}
