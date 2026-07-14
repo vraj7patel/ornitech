@@ -108,9 +108,9 @@ export function WavyBackground({
 export function WavyBackgroundDemo() {
   return (
     <WavyBackground className="wavy-demo-content">
-      <h2 className="wavy-title">Hero waves are cool</h2>
+      <h2 className="wavy-title">Smart Web AI</h2>
       <p className="wavy-subtitle">
-        Leverage the power of canvas to create a beautiful hero section
+        Combining cutting-edge web technologies with AI to build smarter, faster, and future-ready applications.
       </p>
     </WavyBackground>
   );
