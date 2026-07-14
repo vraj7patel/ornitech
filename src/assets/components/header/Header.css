@@ -552,12 +552,12 @@
 /* ── Mobile adjustments ────────────────────────────────────── */
 @media (max-width: 600px) {
   .ot-search-overlay {
-    padding-top: 20px;
-    align-items: flex-end;
+    padding-top: 90px;
+    align-items: flex-start;
   }
 
   .ot-search-modal {
-    margin: 0;
-    border-radius: 24px 24px 0 0;
+    margin: 0 16px;
+    border-radius: 20px;
   }
 }
