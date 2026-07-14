@@ -267,7 +267,6 @@
 
   /* Hide desktop-only nav and buttons */
   .ot-nav,
-  .ot-search-btn,
   .ot-login-btn,
   .ot-cta-btn {
     display: none !important;
