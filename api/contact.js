@@ -50,9 +50,10 @@ function buildAdminEmail({ fullName, email, company, message, submittedAt, ip, c
   <tr><td align="center" style="padding-bottom:32px;">
     <table role="presentation" cellpadding="0" cellspacing="0">
       <tr>
-        <td align="center">
-          <img src="https://www.ornitech.in/logo.png" alt="Ornitech Logo" style="display:block;height:45px;width:auto;outline:none;border:none;text-decoration:none;" />
+        <td valign="middle" style="padding-right:12px;">
+          <img src="https://www.ornitech.in/logo.png" alt="Ornitech Logo" style="display:block;height:40px;width:auto;outline:none;border:none;text-decoration:none;" />
         </td>
+        <td valign="middle" style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:2px;">ORNITECH</td>
       </tr>
     </table>
   </td></tr>
@@ -210,9 +211,10 @@ function buildThankYouEmail({ fullName, email, company, message }) {
   <tr><td align="center" style="padding-bottom:32px;">
     <table role="presentation" cellpadding="0" cellspacing="0">
       <tr>
-        <td align="center">
-          <img src="https://www.ornitech.in/logo.png" alt="Ornitech Logo" style="display:block;height:45px;width:auto;outline:none;border:none;text-decoration:none;" />
+        <td valign="middle" style="padding-right:12px;">
+          <img src="https://www.ornitech.in/logo.png" alt="Ornitech Logo" style="display:block;height:40px;width:auto;outline:none;border:none;text-decoration:none;" />
         </td>
+        <td valign="middle" style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:2px;">ORNITECH</td>
       </tr>
     </table>
   </td></tr>
