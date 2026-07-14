@@ -506,7 +506,7 @@ export default async function handler(req, res) {
   const adminMail = {
     from: `"Ornitech Contact API" <${process.env.GMAIL_USER}>`,
     replyTo: email,
-    to: `vrajpuse14@gmail.com, ${process.env.GMAIL_USER}`,
+    to: process.env.GMAIL_USER,
     subject: `🚀 New Project Inquiry from ${fullName} | Ornitech`,
     html: adminHtml,
     text: `New Contact: ${fullName} (${email}) - Company: ${company || 'N/A'} - Message: ${message}`,
