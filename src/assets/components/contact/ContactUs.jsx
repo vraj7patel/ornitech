@@ -105,7 +105,7 @@ export function ContactUs() {
           <div className="contact-info-row">
             <span>contact@ornitech.in</span>
             <span className="contact-dot">•</span>
-            <span>+91 98765 43210</span>
+            <span>+91 82008 67325</span>
             <span className="contact-dot">•</span>
             <span>support@ornitech.in</span>
           </div>
