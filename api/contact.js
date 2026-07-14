@@ -458,7 +458,9 @@ function buildThankYouEmail({ fullName, email, company, message }) {
 
 // ─── Nodemailer Transport ────────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_PASS,
@@ -504,7 +506,7 @@ export default async function handler(req, res) {
   const adminMail = {
     from: `"Ornitech Contact API" <${process.env.GMAIL_USER}>`,
     replyTo: email,
-    to: process.env.GMAIL_USER,
+    to: `vrajpuse14@gmail.com, ${process.env.GMAIL_USER}`,
     subject: `🚀 New Project Inquiry from ${fullName} | Ornitech`,
     html: adminHtml,
     text: `New Contact: ${fullName} (${email}) - Company: ${company || 'N/A'} - Message: ${message}`,
