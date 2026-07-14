@@ -64,7 +64,7 @@
 
 .ot-logo-text {
   font-family: system-ui, -apple-system, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
@@ -75,7 +75,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-right: 70px;
+  margin-right: 85px;
 }
 
 .ot-nav-list {
@@ -94,7 +94,7 @@
   padding: 5px 12px;
   border-radius: 50px;
   font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.84rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
