@@ -33,6 +33,8 @@
   font-size: clamp(2.2rem, 6vw, 5rem);
   font-weight: 800;
   color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -41,7 +43,9 @@
   max-width: 600px;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: clamp(0.95rem, 1.6vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
   margin-top: 28px;
   line-height: 1.7;
   font-weight: 400;

@@ -112,11 +112,8 @@
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin: 0 0 20px;
-  /* bg-clip-text gradient from neutral-50 → neutral-400 */
-  background: linear-gradient(to bottom, #fafafa 30%, #a3a3a3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
   text-align: center;
 }
 
