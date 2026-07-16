@@ -10,8 +10,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  /* perspective lives here but preserve-3d is removed so header text stays flat */
+  /* 3-D perspective for the scroll tilt effect */
   perspective: 1000px;
+  transform-style: preserve-3d;
   background: #000;
   -webkit-font-smoothing: antialiased;
 }
@@ -25,21 +26,15 @@
   position: relative;
   left: 0;
   top: 0;
-  /* Isolate from 3D stacking context so text is always fully opaque */
-  isolation: isolate;
-  z-index: 2;
-  transform: translateZ(0);
 }
 
 .hp-header-title {
   font-family: system-ui, -apple-system, sans-serif;
   font-size: clamp(2.2rem, 6vw, 5rem);
   font-weight: 800;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
-  -webkit-background-clip: unset !important;
-  background-clip: unset !important;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -48,11 +43,9 @@
   max-width: 600px;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: clamp(0.95rem, 1.6vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.8) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
-  background: none !important;
-  -webkit-background-clip: unset !important;
-  background-clip: unset !important;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
   margin-top: 28px;
   line-height: 1.7;
   font-weight: 400;
@@ -60,8 +53,7 @@
 
 /* ── Rows container (the 3-D animated wrapper) ────────────────── */
 .hp-rows-wrapper {
-  /* 3D context lives HERE only — not on the root — so header text is unaffected */
-  transform-style: preserve-3d;
+  /* framer-motion applies rotateX / rotateZ / translateY / opacity here */
 }
 
 /* ── Individual row ───────────────────────────────────────────── */
