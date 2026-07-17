@@ -1,11 +1,13 @@
 import React from "react";
 import "./Team.css";
+import ronakImg from "../../imges/Ronak.jpeg";
+import swetImg from "../../imges/swet.jpg";
 
 const team = [
   {
     name: "Ronak Talaviya",
     title: "Founder & CEO",
-    avatar: "src/assets/imges/Ronak.jpeg",
+    avatar: ronakImg,
     color: "#1e293b",
   },
   {
@@ -29,7 +31,7 @@ const team = [
   {
     name: "Swet Kalathiya",
     title: "Marketing Manager",
-    avatar: "src/assets/imges/swet.jpg",
+    avatar: swetImg,
     color: "#1e293b",
   },
   {
@@ -38,24 +40,6 @@ const team = [
     avatar: "https://i.pravatar.cc/150?img=44",
     color: "#1e293b",
   },
-  // {
-  //   name: "Samantha Rives",
-  //   title: "Product Manager",
-  //   avatar: "https://i.pravatar.cc/150?img=44",
-  //   color: "#1e293b",
-  // },
-  // {
-  //   name: "Evelyn Martinez",
-  //   title: "QA Lead",
-  //   avatar: "https://i.pravatar.cc/150?img=25",
-  //   color: "#1e293b",
-  // },
-  // {
-  //   name: "Priya Patel",
-  //   title: "Lead UX Researcher",
-  //   avatar: "https://i.pravatar.cc/150?img=48",
-  //   color: "#1e293b",
-  // },
 ];
 
 export function Team() {
