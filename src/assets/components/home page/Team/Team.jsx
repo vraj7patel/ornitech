@@ -29,7 +29,7 @@ const team = [
   {
     name: "Swet Kalathiya",
     title: "Marketing Manager",
-    avatar: "src/assets/imges/Swet.jpg",
+    avatar: "src/assets/imges/swet.jpg",
     color: "#1e293b",
   },
   {
