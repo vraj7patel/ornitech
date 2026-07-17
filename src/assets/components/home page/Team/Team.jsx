@@ -29,7 +29,7 @@ const team = [
   {
     name: "Swet Kalathiya",
     title: "Marketing Manager",
-    avatar: "https://i.pravatar.cc/150?img=11",
+    avatar: "src/assets/imges/Swet.jpg",
     color: "#1e293b",
   },
   {
