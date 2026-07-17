@@ -1,7 +1,7 @@
 import React from "react";
 import "./Team.css";
-import ronakImg from "../../imges/Ronak.jpeg";
-import swetImg from "../../imges/swet.jpg";
+import ronakImg from "../../../imges/Ronak.jpeg";
+import swetImg from "../../../imges/swet.jpg";
 
 const team = [
   {
