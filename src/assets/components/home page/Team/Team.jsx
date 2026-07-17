@@ -3,26 +3,26 @@ import "./Team.css";
 
 const team = [
   {
-    name: "Manu Arora",
+    name: "Ronak Talaviya",
     title: "Founder & CEO",
-    avatar: "https://i.pravatar.cc/150?img=47",
+    avatar: "src/assets/imges/Ronak.jpeg",
     color: "#1e293b",
   },
   {
-    name: "John Doe",
+    name: "Dhruv Bagdariya",
     title: "Co-Founder & CTO",
     avatar: "https://i.pravatar.cc/150?img=68",
     color: "#1e293b",
   },
   {
-    name: "Glennfiddich Doe",
-    title: "Software Engineer",
+    name: "Samrth Gabani",
+    title: "Project Manager",
     avatar: "https://i.pravatar.cc/150?img=33",
     color: "#1e293b",
   },
   {
-    name: "Jameson Beam",
-    title: "Designer",
+    name: "Nikunj Dholakiya",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=51",
     color: "#1e293b",
   },
