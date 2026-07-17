@@ -22,40 +22,40 @@ const team = [
   },
   {
     name: "Nikunj Dholakiya",
-    title: "",
+    title: "Marketing Manager",
     avatar: "https://i.pravatar.cc/150?img=51",
     color: "#1e293b",
   },
   {
-    name: "Johnny Walker",
+    name: "Swet Kalathiya",
     title: "Marketing Manager",
     avatar: "https://i.pravatar.cc/150?img=11",
     color: "#1e293b",
   },
   {
-    name: "Jack Daniels",
+    name: "Shreya Patel",
     title: "HR & Management",
-    avatar: "https://i.pravatar.cc/150?img=52",
-    color: "#1e293b",
-  },
-  {
-    name: "Samantha Rives",
-    title: "Product Manager",
     avatar: "https://i.pravatar.cc/150?img=44",
     color: "#1e293b",
   },
-  {
-    name: "Evelyn Martinez",
-    title: "QA Lead",
-    avatar: "https://i.pravatar.cc/150?img=25",
-    color: "#1e293b",
-  },
-  {
-    name: "Priya Patel",
-    title: "Lead UX Researcher",
-    avatar: "https://i.pravatar.cc/150?img=48",
-    color: "#1e293b",
-  },
+  // {
+  //   name: "Samantha Rives",
+  //   title: "Product Manager",
+  //   avatar: "https://i.pravatar.cc/150?img=44",
+  //   color: "#1e293b",
+  // },
+  // {
+  //   name: "Evelyn Martinez",
+  //   title: "QA Lead",
+  //   avatar: "https://i.pravatar.cc/150?img=25",
+  //   color: "#1e293b",
+  // },
+  // {
+  //   name: "Priya Patel",
+  //   title: "Lead UX Researcher",
+  //   avatar: "https://i.pravatar.cc/150?img=48",
+  //   color: "#1e293b",
+  // },
 ];
 
 export function Team() {
