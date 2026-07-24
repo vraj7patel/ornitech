@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import './HowItWorks.css'
 
 const steps = [
@@ -60,16 +60,33 @@ const steps = [
 ]
 
 export function HowItWorks() {
+  const sectionRef = useRef(null)
+  
+  // Real scroll progress for line laser fill
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start 70%', 'end 40%'],
+  })
+
+  const scaleProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 25,
+    restDelta: 0.001,
+  })
+
   return (
-    <section className="how-it-works-section">
+    <section className="how-it-works-section" ref={sectionRef}>
+      {/* Dynamic light spot follower */}
+      <div className="ambient-spotlight" />
+
       <div className="how-it-works-container">
         {/* Header section */}
         <motion.div
           className="how-it-works-header"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="how-it-works-badge">
             <span className="badge-dot"></span>
@@ -85,14 +102,11 @@ export function HowItWorks() {
 
         {/* Steps container */}
         <div className="how-it-works-flow">
-          {/* Horizontal connecting line */}
+          {/* Scroll-driven Laser Progress Line */}
           <div className="flow-line-bg">
             <motion.div
               className="flow-line-progress"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.3, ease: 'easeInOut' }}
+              style={{ scaleX: scaleProgress }}
             />
           </div>
 
@@ -101,13 +115,18 @@ export function HowItWorks() {
               <motion.div
                 key={index}
                 className="step-card"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-                whileHover={{ y: -6 }}
+                initial={{ opacity: 0, y: 55, rotateX: 10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.14,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="step-icon-wrapper">
+                  <div className="step-icon-glow-ring" />
                   <div className="step-icon-box">{item.icon}</div>
                 </div>
                 <div className="step-content">
