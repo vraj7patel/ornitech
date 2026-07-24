@@ -110,9 +110,11 @@ export function HowItWorks() {
                 <div className="step-icon-wrapper">
                   <div className="step-icon-box">{item.icon}</div>
                 </div>
-                <div className="step-meta">{item.step}</div>
-                <h3 className="step-title">{item.title}</h3>
-                <p className="step-description">{item.description}</p>
+                <div className="step-content">
+                  <div className="step-meta">{item.step}</div>
+                  <h3 className="step-title">{item.title}</h3>
+                  <p className="step-description">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
