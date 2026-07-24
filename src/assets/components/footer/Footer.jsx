@@ -119,10 +119,10 @@ export function Footer() {
         <div className="giant-brand-wrapper">
           <motion.span
             className="giant-brand-text"
-            initial={{ opacity: 0, y: 120 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ amount: 0.05 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             ornitech
           </motion.span>

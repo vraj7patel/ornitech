@@ -316,4 +316,13 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .giant-brand-wrapper {
+    margin: 20px 0 10px;
+  }
+
+  .giant-brand-text {
+    font-size: clamp(3.2rem, 14vw, 6.5rem);
+    letter-spacing: -0.04em;
+  }
 }
