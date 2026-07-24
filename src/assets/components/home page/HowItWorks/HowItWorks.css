@@ -1,0 +1,235 @@
+/* HowItWorks.css */
+
+.how-it-works-section {
+  position: relative;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 120px 32px 140px;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* Background subtle glow effect */
+.how-it-works-section::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, rgba(192, 132, 252, 0.03) 50%, transparent 80%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.how-it-works-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.how-it-works-header {
+  margin-bottom: 90px;
+  text-align: left;
+}
+
+.how-it-works-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #71717a;
+  display: inline-block;
+}
+
+.how-it-works-title {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  font-family: serif, system-ui, -apple-system, sans-serif;
+}
+
+.desktop-br {
+  display: block;
+}
+
+.how-it-works-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: #888888;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+/* Flow & Steps layout */
+.how-it-works-flow {
+  position: relative;
+  margin-top: 40px;
+}
+
+/* Horizontal line running behind icons */
+.flow-line-bg {
+  position: absolute;
+  top: 36px; /* center vertically aligned with 72px icon box height */
+  left: 36px;
+  right: 36px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 0;
+}
+
+.flow-line-progress {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(56, 189, 248, 0.6), rgba(192, 132, 252, 0.4));
+  transform-origin: left;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Step Card */
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-icon-wrapper {
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.step-card:hover .step-icon-box {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #38bdf8;
+  background: rgba(26, 26, 26, 0.98);
+  box-shadow: 
+    0 12px 36px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(56, 189, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.step-meta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #71717a;
+  margin-bottom: 10px;
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.step-description {
+  font-size: 0.95rem;
+  color: #999999;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .how-it-works-section {
+    padding: 100px 24px;
+  }
+  
+  .steps-grid {
+    gap: 24px;
+  }
+
+  .step-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  .flow-line-bg {
+    top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-it-works-section {
+    padding: 80px 20px;
+  }
+
+  .how-it-works-header {
+    margin-bottom: 50px;
+  }
+
+  .desktop-br {
+    display: inline;
+  }
+
+  /* Vertical flow layout on mobile */
+  .flow-line-bg {
+    top: 36px;
+    bottom: 36px;
+    left: 36px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .flow-line-progress {
+    transform-origin: top;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .step-card {
+    padding-left: 0;
+  }
+}

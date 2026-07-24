@@ -50,7 +50,7 @@ export const HeroParallax = ({ products }) => {
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [-500, 150]),
+    useTransform(scrollYProgress, [0, 0.8], [-500, 0]),
     springConfig
   );
 
@@ -112,8 +112,9 @@ const ParallaxHeader = () => (
       Our Work &amp; <br /> Solutions
     </h2>
     <p className="hp-header-sub">
-      We craft intelligent, beautiful products powered by cutting-edge AI
-      and modern technology — built for impact, designed for humans.
+      {/*We craft intelligent, beautiful products powered by cutting-edge AI
+      and modern technology — built for impact, designed for humans.*/}
+      At Ornitech Solutions, we craft innovative websites, AI-powered tools, and IoT solutions that transform ideas into scalable, future-ready digital experiences designed for growth.
     </p>
   </div>
 );

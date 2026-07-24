@@ -5,6 +5,7 @@ import { Header } from './assets/components/header/Header.jsx'
 import { SpotlightNewDemo } from './assets/components/home page/Spotlight New/SpotlightNew.jsx'
 import { WavyBackgroundDemo } from './assets/components/home page/Wavy Background/WavyBackground.jsx'
 import { HeroParallaxDemo } from './assets/components/home page/HeroParallax/HeroParallaxDemo.jsx'
+import { HowItWorks } from './assets/components/home page/HowItWorks/HowItWorks.jsx'
 import { Team } from './assets/components/home page/Team/Team.jsx'
 import { Testimonials } from './assets/components/home page/Testimonials/Testimonials.jsx'
 import { ContactUs } from './assets/components/contact/ContactUs.jsx'
@@ -90,6 +91,7 @@ function AppInner() {
               {/* <Testimonials /> */}
               {/* <ContactUs /> */}
               <HeroParallaxDemo />
+              <HowItWorks />
               <WavyBackgroundDemo />
             </>
           }
