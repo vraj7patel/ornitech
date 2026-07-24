@@ -2,9 +2,11 @@
 
 .how-it-works-section {
   position: relative;
+  z-index: 10;
   background-color: #000000;
   color: #ffffff;
   padding: 120px 32px 140px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   font-family: inherit;
 }
