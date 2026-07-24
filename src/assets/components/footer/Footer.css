@@ -39,7 +39,7 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  opacity: 0.85;
+  opacity: 0.55;
 }
 
 .footer-wave-lines svg {
