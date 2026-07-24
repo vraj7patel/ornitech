@@ -37,7 +37,7 @@ export function WavyBackground({
     "#818cf8",
     "#c084fc",
     "#e879f9",
-    "#2dd4bf",
+    "#14b8a6",
   ];
 
   useEffect(() => {

@@ -24,7 +24,7 @@
   left: 30%;
   width: 600px;
   height: 400px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(255, 94, 54, 0.05) 50%, transparent 80%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(96, 165, 250, 0.10) 40%, rgba(129, 140, 248, 0.06) 70%, transparent 90%);
   filter: blur(100px);
   pointer-events: none;
   z-index: 0;
@@ -60,13 +60,12 @@
   flex: 1;
 }
 
-/* Top Grid: CTA Left, Nav Right */
+/* Top Section: CTA Left */
 .footer-top-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 40px;
-  /* margin-bottom: 20px; */
-  align-items: start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
 /* Left CTA Box */
@@ -126,10 +125,7 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  background: linear-gradient(90deg, #ff5e36, #ff8c36, #f43f5e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 /* CTA Button */
@@ -141,25 +137,37 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff;
-  color: #000000;
+
+  /* Dark glass */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  color: #ffffff;
   font-size: 0.95rem;
-  font-weight: 700;
-  padding: 12px 28px;
+  font-weight: 600;
+  padding: 13px 30px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-free-btn:hover {
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 8px 28px rgba(0, 0, 0, 0.5);
 }
 
 .cta-free-btn svg {
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .cta-free-btn:hover svg {
@@ -222,10 +230,7 @@
   line-height: 0.88;
   letter-spacing: -0.06em;
   text-transform: lowercase;
-  background: linear-gradient(90deg, #ffffff 0%, #2dd4bf 28%, #ff5e36 55%, #818cf8 78%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   will-change: transform, opacity;
 }
 
