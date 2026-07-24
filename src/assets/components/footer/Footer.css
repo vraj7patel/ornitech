@@ -211,22 +211,22 @@
   text-align: center;
   margin: 10px 0 10px;
   user-select: none;
-  overflow: hidden;
+  line-height: 0.88;
 }
 
+/* Animated brand span */
 .giant-brand-text {
+  display: inline-block;
   font-size: clamp(4rem, 20vw, 21.5rem);
   font-weight: 900;
-  line-height: 0.85;
+  line-height: 0.88;
   letter-spacing: -0.06em;
-  display: block;
-  width: 100%;
   text-transform: lowercase;
   background: linear-gradient(90deg, #ffffff 0%, #2dd4bf 28%, #ff5e36 55%, #818cf8 78%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+  will-change: transform, opacity;
 }
 
 /* Bottom Bar */
