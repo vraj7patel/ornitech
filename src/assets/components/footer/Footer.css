@@ -125,7 +125,17 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: #ffffff;
+  /* color: #ffffff; */
+  /* background-image: linear-gradient(to right, #fff 0%, #c4c4c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important; */
+  /* vraj */
+  background: linear-gradient(90deg, #38bdf8 0%, #818cf8 40%, #c084fc 75%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* CTA Button */
@@ -232,6 +242,12 @@
   text-transform: lowercase;
   color: #ffffff;
   will-change: transform, opacity;
+  /* vraj */
+  /* background: linear-gradient(90deg, #38bdf8 0%, #818cf8 40%, #c084fc 75%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; */
 }
 
 /* Bottom Bar */
