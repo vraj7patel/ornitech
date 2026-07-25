@@ -216,15 +216,15 @@ body {
     gap: 12px;
   }
 
-  .team-info {
+  /* .team-info {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
-  }
+  } */
 
-  .team-dot {
+  /* .team-dot {
     display: none;
-  }
+  } */
 
   /* Floating mobile action buttons */
   .floating-buttons {
