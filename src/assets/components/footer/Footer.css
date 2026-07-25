@@ -343,7 +343,8 @@
   }
 
   .giant-brand-text {
-    font-size: clamp(3.2rem, 14vw, 6.5rem);
+    font-size: clamp(3.2rem, 22.5vw, 18.5rem);
     letter-spacing: -0.04em;
+    margin-bottom: 12px;
   }
 }
