@@ -4,7 +4,7 @@
 
 /* Root container — 200vh for a tighter, more responsive scroll container */
 .hp-root {
-  height: 225vh;
+  height: 200vh;
   padding: 10vh 0 10vh 0;
   overflow: hidden;
   position: relative;
