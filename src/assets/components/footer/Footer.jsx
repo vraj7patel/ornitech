@@ -102,7 +102,7 @@ export function Footer() {
               opacity: 0,
               y: 60,
               scale: 0.96,
-              filter: "blur(2px)"
+              filter: "blur(2.3px)"
             }}
             // whileInView={{ opacity: 1, y: 0 }}
             whileInView={{
