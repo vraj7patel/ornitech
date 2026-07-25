@@ -239,6 +239,7 @@
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.055em;
+  margin-bottom: 15px;
   text-transform: lowercase;
   color: #ffffff;
   will-change: transform, opacity;
