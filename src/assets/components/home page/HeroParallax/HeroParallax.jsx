@@ -14,14 +14,6 @@ export const HeroParallax = ({ products }) => {
   const thirdRow = products.slice(10, 16);
   const ref = React.useRef(null);
 
-  // Detect mobile to disable parallax transforms
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 900);
-  useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth <= 900);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -54,12 +46,9 @@ export const HeroParallax = ({ products }) => {
     springConfig
   );
 
-  // On mobile: no 3D transforms, no horizontal translate
-  const wrapperStyle = isMobile
-    ? {}
-    : { rotateX, rotateZ, translateY, opacity };
-  const txForward = isMobile ? 0 : translateX;
-  const txReverse = isMobile ? 0 : translateXReverse;
+  const wrapperStyle = { rotateX, rotateZ, translateY, opacity };
+  const txForward = translateX;
+  const txReverse = translateXReverse;
 
   return (
     <div ref={ref} className="hp-root">

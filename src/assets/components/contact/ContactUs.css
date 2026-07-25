@@ -271,8 +271,12 @@
     gap: 48px;
   }
 
+.wavy-container {
+      height: 40vh;
+}
   .contact-section {
-    padding: 60px 24px;
+    padding: 60px 40px;
+    padding-top: 100px;
   }
 
   .contact-map-wrap {

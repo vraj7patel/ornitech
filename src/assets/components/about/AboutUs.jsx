@@ -1,15 +1,16 @@
 import React from "react";
 import { Team } from "../home page/Team/Team.jsx";
 import { Testimonials } from "../home page/Testimonials/Testimonials.jsx";
-import { BackgroundBeamsWithCollision } from "./BackgroundBeamsWithCollision.jsx";
+import { BackgroundBeams } from "./BackgroundBeams.jsx";
 import "./AboutUs.css";
 
 export function AboutUs() {
   return (
     <main className="about-page">
 
-      {/* ── Hero Banner with Exploding Beams Background ───────────── */}
-      <BackgroundBeamsWithCollision className="about-hero">
+      {/* ── Hero Banner with Background Beams ────────────────────────── */}
+      <section className="about-hero">
+        <BackgroundBeams />
         <div className="about-hero-inner">
           <div className="about-hero-badge">
             <span className="about-badge-dot" />
@@ -41,7 +42,7 @@ export function AboutUs() {
             </div>
           </div>
         </div>
-      </BackgroundBeamsWithCollision>
+      </section>
 
       {/* ── Mission & Vision cards ───────────────────────────── */}
       {/* <section className="about-mission">
