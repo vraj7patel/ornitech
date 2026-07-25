@@ -61,7 +61,7 @@ const steps = [
 
 export function HowItWorks() {
   const sectionRef = useRef(null)
-  
+
   // Real scroll progress for line laser fill
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -89,7 +89,7 @@ export function HowItWorks() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="how-it-works-badge">
-            <span className="badge-dot"></span>
+            {/* <span className="badge-dot"></span> */}
             How it works
           </div>
           <h2 className="how-it-works-title">

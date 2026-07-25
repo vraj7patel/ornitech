@@ -14,6 +14,26 @@ export const HeroParallax = ({ products }) => {
   const thirdRow = products.slice(10, 16);
   const ref = React.useRef(null);
 
+  // Responsive translateY so mobile rows don't go off-screen
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false
+  );
+  const [isTablet, setIsTablet] = useState(
+    typeof window !== "undefined"
+      ? window.innerWidth > 768 && window.innerWidth <= 1024
+      : false
+  );
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsTablet(window.innerWidth > 768 && window.innerWidth <= 1024);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const translateYStart = isMobile ? -100 : isTablet ? -280 : -500;
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -30,19 +50,27 @@ export const HeroParallax = ({ products }) => {
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [15, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.8],
+      isMobile ? [12, 0] : [15, 0]
+    ),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [0.4, 1]),
+    useTransform(scrollYProgress, [0, 0.8], [0.6, 1]),
     springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [20, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.8],
+      isMobile ? [12, 0] : [20, 0]
+    ),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [-500, 0]),
+    useTransform(scrollYProgress, [0, 0.8], [translateYStart, 0]),
     springConfig
   );
 

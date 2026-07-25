@@ -219,9 +219,9 @@
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hp-root {
-    height: 105vh;
-    padding: 2vh 0 2vh 0;
-    perspective: 800px;
+    height: 155vh;
+    padding: 0 0 60px;
+    perspective: 750px;
     overflow: hidden;
   }
 
@@ -231,16 +231,16 @@
   }
 
   .hp-header {
-    padding: 40px 24px 30px;
+    padding: 110px 24px 30px;
   }
 
   .hp-header-title {
-    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-size: clamp(2rem, 5.5vw, 3rem);
   }
 
   .hp-header-sub {
-    font-size: clamp(0.88rem, 2.5vw, 1.05rem);
-    margin-top: 12px;
+    font-size: clamp(0.88rem, 2.2vw, 1rem);
+    margin-top: 10px;
   }
 
   .hp-row {
@@ -249,28 +249,28 @@
   }
 
   .hp-card {
-    width: 240px;
-    height: 180px;
-    border-radius: 14px;
+    width: 230px;
+    height: 172px;
+    border-radius: 12px;
   }
 
   .hp-card-img,
   .hp-card-shine,
   .hp-card-overlay {
-    border-radius: 14px;
+    border-radius: 12px;
   }
 
   .hp-card-tag {
     opacity: 1;
     transform: translateY(0);
-    font-size: 0.65rem;
-    padding: 3px 8px;
+    font-size: 0.62rem;
+    padding: 3px 7px;
   }
 
   .hp-card-footer {
     opacity: 1;
     transform: translateY(0);
-    padding: 10px;
+    padding: 8px 10px;
   }
 
   .hp-card-overlay {
@@ -278,7 +278,7 @@
   }
 
   .hp-card-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .hp-card-desc {
@@ -288,115 +288,101 @@
 
 @media (max-width: 768px) {
   .hp-root {
-    height: 90vh;
-    padding: 1vh 0 1vh 0;
-    perspective: 650px;
+    height: 175vh;
+    padding: 0 0 20px;
+    perspective: 500px;
   }
 
   .hp-header {
-    padding: 30px 20px 20px;
+    padding: 120px 16px 12px;
   }
 
   .hp-row {
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 1.5vw;
+    margin-bottom: 1.5vw;
   }
 
   .hp-card {
-    width: 160px;
-    height: 120px;
-    border-radius: 10px;
+    width: 17vw;
+    height: 12.5vw;
+    border-radius: 5px;
   }
 
   .hp-card-img,
   .hp-card-shine,
   .hp-card-overlay {
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .hp-card-tag {
-    font-size: 0.55rem;
-    padding: 2px 5px;
-    top: 6px;
-    left: 6px;
+    display: none;
   }
 
   .hp-card-footer {
-    padding: 6px;
-  }
-
-  .hp-card-title {
-    font-size: 0.75rem;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .hp-root {
-    height: 80vh;
-    perspective: 500px;
-    padding: 1vh 0 1vh 0;
+    height: 160vh;
+    perspective: 400px;
+    padding: 0 0 10px;
+  }
+
+  .hp-header {
+    padding: 110px 14px 10px;
+  }
+
+  .hp-row {
+    gap: 1.2vw;
+    margin-bottom: 1.2vw;
   }
 
   .hp-card {
-    width: 110px;
-    height: 80px;
-    border-radius: 8px;
+    width: 14vw;
+    height: 10vw;
+    border-radius: 4px;
   }
 
   .hp-card-img,
   .hp-card-shine,
   .hp-card-overlay {
-    border-radius: 8px;
-  }
-
-  .hp-row {
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .hp-header {
-    padding: 24px 16px 15px;
+    border-radius: 4px;
   }
 
   .hp-card-tag {
-    font-size: 0.48rem;
-    padding: 1px 4px;
-    top: 4px;
-    left: 4px;
+    display: none;
   }
 
   .hp-card-footer {
-    padding: 4px 6px;
-  }
-
-  .hp-card-title {
-    font-size: 0.65rem;
+    display: none;
   }
 }
 
 @media (max-width: 380px) {
   .hp-root {
-    height: 75vh;
+    height: 155vh;
+  }
+
+  .hp-header {
+    padding: 100px 12px 8px;
+  }
+
+  .hp-row {
+    gap: 1vw;
+    margin-bottom: 1vw;
   }
 
   .hp-card {
-    width: 90px;
-    height: 65px;
-    border-radius: 6px;
+    width: 12vw;
+    height: 9vw;
+    border-radius: 3px;
   }
 
   .hp-card-img,
   .hp-card-shine,
   .hp-card-overlay {
-    border-radius: 6px;
-  }
-
-  .hp-row {
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
-  .hp-card-title {
-    font-size: 0.58rem;
+    border-radius: 3px;
   }
 }
