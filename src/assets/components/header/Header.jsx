@@ -118,7 +118,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="ot-logo">
             <img src={logo} alt="Ornitech" className="ot-logo-img" />
-            <span className="ot-logo-text">Ornitech</span>
+            <span className="ot-logo-text">ornitech</span>
           </Link>
 
           {/* Center Nav */}

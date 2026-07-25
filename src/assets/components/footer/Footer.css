@@ -228,7 +228,7 @@
   font-size: clamp(4rem, 20vw, 21.5rem);
   font-weight: 900;
   line-height: 0.88;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
   text-transform: lowercase;
   color: #ffffff;
   will-change: transform, opacity;
