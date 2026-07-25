@@ -152,7 +152,8 @@
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 2.4rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  /* background: #1466a0; */
+  background: linear-gradient(135deg, #1466a0, #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

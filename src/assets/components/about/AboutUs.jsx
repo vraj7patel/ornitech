@@ -18,7 +18,8 @@ export function AboutUs() {
           </div> */}
           <h1 className="about-hero-title">
             Building the Future <br />
-            <span className="about-hero-accent">with Intelligent Tech</span>
+            with <span> </span>
+            <span className="about-hero-accent"> Intelligent Tech</span>
           </h1>
           <p className="about-hero-sub">
             Ornitech is a team of passionate engineers, designers, and thinkers
