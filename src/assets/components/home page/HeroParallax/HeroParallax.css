@@ -219,7 +219,7 @@
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hp-root {
-    height: 155vh;
+    height: 112vh;
     padding: 0 0 60px;
     perspective: 750px;
     overflow: hidden;
@@ -288,7 +288,7 @@
 
 @media (max-width: 768px) {
   .hp-root {
-    height: 175vh;
+    height: 115vh;
     padding: 0 0 20px;
     perspective: 500px;
   }
@@ -325,7 +325,7 @@
 
 @media (max-width: 480px) {
   .hp-root {
-    height: 160vh;
+    height: 142vh;
     perspective: 400px;
     padding: 0 0 10px;
   }
