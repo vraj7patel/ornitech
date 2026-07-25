@@ -121,7 +121,7 @@ export function Footer() {
             // transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 
             // Apple-like
-            transition={{ duration: 1.69, ease: [0.25, 1, 0.5, 1] }}
+            transition={{ duration: 1.59, ease: [0.25, 1, 0.5, 1] }}
 
           // Premium cinematic
           // transition={{ duration: 1.8, ease: [0.26, 1, 1.3, 1] }}
