@@ -12,10 +12,10 @@ export function AboutUs() {
       <section className="about-hero">
         <BackgroundBeams />
         <div className="about-hero-inner">
-          <div className="about-hero-badge">
+          {/* <div className="about-hero-badge">
             <span className="about-badge-dot" />
             <span>Who We Are</span>
-          </div>
+          </div> */}
           <h1 className="about-hero-title">
             Building the Future <br />
             <span className="about-hero-accent">with Intelligent Tech</span>
